@@ -1,78 +1,80 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 
+
+// user schema to show how data will be stored for user in database
 const userSchema = new mongoose.Schema({
-    fullName:{
-        type:String,
-        required:true,
+    fullName: {
+        type: String,
+        required: true,
     },
 
-    email:{
-        type:String,
-        required:true,
-        unique:true,
+    email: {
+        type: String,
+        required: true,
+        unique: true,
     },
 
-    password:{
-        type:String,
-        required:true,
-        minlength:6,
-    },
-    
-    bio:{
-        type:String,
-        default:"",
+    password: {
+        type: String,
+        required: true,
+        minlength: 6,
     },
 
-    profilePic:{
-        type:String,
-        default:"",
+    bio: {
+        type: String,
+        default: "",
     },
 
-    nativeLanguage:{
-        type:String,
-        default:"",
+    profilePic: {
+        type: String,
+        default: "",
     },
 
-    learningLanguage:{
-        type:String,
-        default:"",
+    nativeLanguage: {
+        type: String,
+        default: "",
     },
 
-    location:{
-        type:String,
-        defualt:"",
+    learningLanguage: {
+        type: String,
+        default: "",
     },
 
-    isOnboarded:{
-        type:Boolean,
-        default:false,
+    location: {
+        type: String,
+        defualt: "",
     },
-    
-    friends:[
-        {type:mongoose.Schema.Types.ObjectId,
-            ref:"User",
+
+    isOnboarded: {
+        type: Boolean,
+        default: false,
+    },
+
+    friends: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
         }
     ]
 
 
 
 
+    // time stamps to get when account was created at etc ...
+}, { timestamps: true });
 
-}, {timestamps:true});
 
-
-
+// create the model using the schema we built above
 const User = mongoose.model("User", userSchema);
 
 
 // pre hook
 // hashing password
-userSchema.pre("save", async function(next){
+userSchema.pre("save", async function (next) {
 
 
     if (!this.isModified("password")) return next();
-
 
 
     try {
@@ -85,7 +87,7 @@ userSchema.pre("save", async function(next){
         next();
     } catch (error) {
         next(error);
-        
+
     }
 })
 

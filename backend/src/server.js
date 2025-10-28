@@ -10,7 +10,10 @@ const app = express();
 const PORT = process.env.PORT || 5001;
 
 
+
+
 // middle ware
+app.use(express.json());
 app.use("/api/auth", authRoutes);
 
 

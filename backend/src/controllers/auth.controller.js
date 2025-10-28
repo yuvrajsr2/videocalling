@@ -31,7 +31,7 @@ export async function signup(req, res){
 
         const randomPic = `https://avatar.iran.liara.run/public/${index}.png`;
 
-        const newUser = new User.create({
+        const newUser = await User.create({
             email,
             fullName,
             password,

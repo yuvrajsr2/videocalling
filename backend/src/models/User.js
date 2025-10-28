@@ -65,10 +65,6 @@ const userSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 
-// create the model using the schema we built above
-const User = mongoose.model("User", userSchema);
-
-
 // pre hook
 // hashing password
 userSchema.pre("save", async function (next) {
@@ -90,6 +86,12 @@ userSchema.pre("save", async function (next) {
 
     }
 })
+
+// create the model using the schema we built above
+const User = mongoose.model("User", userSchema);
+
+
+
 
 export default User;
 

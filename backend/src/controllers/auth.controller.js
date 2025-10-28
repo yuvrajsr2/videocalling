@@ -41,6 +41,15 @@ export async function signup(req, res){
 
         const token = jwt.sign({userId:newUser._id}, process.env.JWT_SECRET, {expiresIn: "7d"},);
 
+        res.cookie("jwt", token, {
+            maxAge: 7 * 24 * 60 * 60 * 1000,
+            httpOnly: true, // prevent xss attacks
+            secure: process.env.NODE_ENV === "production", //
+            sameSite: "none", // prevent csrf attacks
+        })
+
+        res.status(201).json({success:true, user:newUser});
+
     } catch (error) {
         
     }

@@ -6,8 +6,8 @@ const router = express.Router();
 
 
 // auth post routes for signup login and logout
-router.post('/api/auth/signup', signup)
-router.post('/api/auth/login', login)
-router.post('/api/auth/logout', logout)
+router.post('/signup', signup)
+router.post('/login', login)
+router.post('/logout', logout)
 
 export default router;

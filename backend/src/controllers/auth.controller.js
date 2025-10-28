@@ -39,6 +39,8 @@ export async function signup(req, res){
             
         })
 
+        // TODO : Create the USER in STREAM as well
+
         const token = jwt.sign({userId:newUser._id}, process.env.JWT_SECRET, {expiresIn: "7d"},);
 
         res.cookie("jwt", token, {
@@ -51,7 +53,8 @@ export async function signup(req, res){
         res.status(201).json({success:true, user:newUser});
 
     } catch (error) {
-        
+        console.log("Error in signup controller", error);
+        res.status(500).json({error: "Internal server error"});
     }
 }
 

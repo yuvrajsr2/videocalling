@@ -136,7 +136,7 @@ export function onboard(req, res){
                     !learningLanguage && "learningLanguage",
                     !location && "location",
                     
-                ],
+                ].filter(Boolean),
             });
         }
 

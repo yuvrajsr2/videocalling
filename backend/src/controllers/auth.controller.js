@@ -131,7 +131,23 @@ export function onboard(req, res){
             return res.status(400).json({error: "Missing fields"});
         }
 
+        const updatedUser = User.findByIdAndUpdate(userId, {
+            ...req.body,
+            isOnboarded: true,
+        }, {new: true});
+
+
+        if (!updatedUser){
+            return res.status(400).json({error: "User not found"});
+        }
+
+        // also need to update the user info on stream 
+
+        res.status(200).json({success:true, user:updatedUser});
+
     } catch (error) {
+        console.log("Error in onboard controller", error);
+        res.status(500).json({error: "Internal server error"});
         
     }
 }

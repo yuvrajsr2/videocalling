@@ -128,7 +128,16 @@ export function onboard(req, res){
         const {fullName, bio, nativeLanguage, learningLanguage, location} = req.body;
 
         if (!fullName || !bio || !nativeLanguage || !learningLanguage || !location){
-            return res.status(400).json({error: "Missing fields"});
+            return res.status(400).json({message: "Missing fields",
+                missingFields:[
+                    !fullName && "fullName",
+                    !bio && "bio",
+                    !nativeLanguage && "nativeLanguage",
+                    !learningLanguage && "learningLanguage",
+                    !location && "location",
+                    
+                ],
+            });
         }
 
         const updatedUser = User.findByIdAndUpdate(userId, {

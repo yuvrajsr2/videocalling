@@ -24,5 +24,15 @@ export async function getRecommendations(req, res) {
 }
 
 export async function getFriends(req, res) {
-    res.status(200).json({ message: "hello" })
+    try {
+        const user = await User.findById(req.user.id).select("friends").populate(
+            "friends", "fullName profilePic nativeLanguage learningLanguage");
+
+        res.status(200).json(user.friends);
+    } catch (error) {
+
+        console.log(error);
+        res.status(500).json({ error: "Server error" });
+        
+    }
 }

@@ -16,6 +16,7 @@ router.get("/friends",getFriends);
 
 router.post("/friends-request/:id", sendFriendRequest);
 router.put("/friend-request/:id/accept", acceptFriendRequest);
+// asldo need to add a reject route later to reject friend req
 
 router.get("/friend-requests", getFriendRequests);
 router.get("/outgoing-friend-requests", getOutgoingFriendReqs);

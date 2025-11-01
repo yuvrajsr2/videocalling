@@ -1,5 +1,5 @@
 import express from 'express';
-import { getRecommendations, getFriends, sendFriendRequest } from '../controllers/user.controller.js';
+import { getRecommendations, getFriends, sendFriendRequest, acceptFriendRequest} from '../controllers/user.controller.js';
 import { protectRoute } from '../middleware/auth.middleware.js';
 
 

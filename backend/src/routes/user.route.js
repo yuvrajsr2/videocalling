@@ -13,6 +13,8 @@ router.get("/", getRecommendations);
 router.get("/friends",getFriends);
 
 
+
 router.post("/friends-request/:id", sendFriendRequest);
+router.put("/friend-request/:id/accept", acceptFriendRequest);
 
 export default router;

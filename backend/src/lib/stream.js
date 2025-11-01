@@ -22,7 +22,7 @@ export const upsertStreamUser = async (user) =>{
 }
 
 
-// todo : create a stream token for the users
+
 export const generateStreamToken = async (id) => {
 
     try {

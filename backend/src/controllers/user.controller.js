@@ -36,3 +36,7 @@ export async function getFriends(req, res) {
         
     }
 }
+
+export async function sendFriendRequest(req, res){
+    
+}

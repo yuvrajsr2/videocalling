@@ -1,24 +1,24 @@
 import React from 'react';
-import {ShipWheelIcon} from 'lucide-react';
+import { ShipWheelIcon } from 'lucide-react';
 
 const SignUpPage = () => {
 
   const [signupData, setSignupData] = React.useState({
-    username: '',
+    fullName: '',
     email: '',
     password: '',
   });
 
 
-  const handleSignup = (e) =>{
+  const handleSignup = (e) => {
     e.preventDefault();
     // signup logic here
   }
   return (
     <div className='h-screen flex items-center justify-center p-4 sm:p-6 md:p-8' data-theme='forest'>
       <div className='border border-primary/25 flex flex-col lg:flex-row w-full max-w-5xl mx-auto bg-base-100
-      rounded-xl shadow-lg overflow-hidden'>  
-      
+      rounded-xl shadow-lg overflow-hidden'>
+
         <div className='w-full lg:w-1/2 p-4 sm:p-8 flex flex-col '>
           {/* LOGO */}
           <div className='mb-4 flex items-center justify-start gap-2'>
@@ -28,9 +28,38 @@ const SignUpPage = () => {
             to-secondary tracking-wider'>VYOO</span>
 
           </div>
+
+          <div className='w-full flex-1'>
+            <form onSubmit={handleSignup}>
+              <div className='space-y-4'>
+                <div>
+                  <h2 className='text-xl font-semibold'>Create an account</h2>
+                  <p className='text-sm opacity-70'>HAVE FUN AND CALL YOUR FRIENDS</p>
+
+                </div>
+                <div className='space-y-3'>
+                  <div className='form-control w-full'>
+                    <label className='label'>
+                      <span className='label-text '>Full Name</span>
+                    </label>
+
+                    <input type="text"
+                      placeholder="Emma Stone"
+                      className='input input-bordered w-full'
+                      value={signupData.fullName}
+                      onChange={(e) => setSignupData({ ...signupData, fullName: e.target.value })}
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
+
+
       </div>
-      
+
     </div>
   )
 }

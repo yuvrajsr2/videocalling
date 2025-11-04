@@ -51,6 +51,49 @@ const SignUpPage = () => {
                       required
                     />
                   </div>
+
+                  <div className='form-control w-full'>
+                    <label className='label'>
+                      <span className='label-text '>Email</span>
+                    </label>
+
+                    <input type="email"
+                      placeholder="emma@gmail.com"
+                      className='input input-bordered w-full'
+                      value={signupData.email}
+                      onChange={(e) => setSignupData({ ...signupData, email: e.target.value })}
+                      required
+                    />
+                  </div>
+
+                  <div className='form-control w-full'>
+                    <label className='label'>
+                      <span className='label-text '>Password</span>
+                    </label>
+
+                    <input type="password"
+                      placeholder="••••••••"
+                      className='input input-bordered w-full'
+                      value={signupData.password}
+                      onChange={(e) => setSignupData({ ...signupData, password: e.target.value })}
+                      required
+                    />
+
+                    <p className='text-xs opacity-70 mt-1'>Password must be at least 6 characters</p>
+                  </div>
+
+                  <div className='form-control '>
+                    <label className='label cursor-pointer justify-start gap-2'>
+                      <input type="checkbox" className='checkbox checkbox-sm' required />
+                      <span className='text-xs leading-tight'>
+                        I agree to the {" "}
+                        <span className='text-primary hover:underline'>terms of service</span> and {" "}
+                        <span className='text-primary hover:underline'>privacy policy</span>
+
+
+                      </span>
+                    </label>
+                  </div>
                 </div>
               </div>
             </form>

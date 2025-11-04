@@ -1,5 +1,6 @@
 import React from 'react';
 import { ShipWheelIcon } from 'lucide-react';
+import { Link } from 'react-router';
 
 const SignUpPage = () => {
 
@@ -95,12 +96,32 @@ const SignUpPage = () => {
                     </label>
                   </div>
                 </div>
+
+                <button className='btn btn-primary w-full' type='submit'>Create account</button>
+
+                <div className='text-center mt-4 '>
+                  <p>
+                    Already have an account? <Link to="/login" className='text-primary hover:underline'>Log in</Link>
+                  </p>
+                  </div>
               </div>
             </form>
           </div>
         </div>
 
 
+        <div className='hidden lg:flex w-full lg:w-1/2 bg-primary/10 items-center justify-center'>
+          <div className='max-w-md p-8'>
+            <div className='relative aspect-square max-w-sm mx-auto'>
+              <img src="/vid-call.png" alt="Graphic for sign up page" className='w-full h-full' />
+            </div>
+
+            <div className='text-center space-y-3 mt-6'>
+              <h2 className='text-xl font-semibold'>Connect with people around the world</h2>
+              <p className='opacity-70'>Have fun and call your friends</p>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>

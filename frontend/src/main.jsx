@@ -5,10 +5,23 @@ import App from './App.jsx'
 
 import { BrowserRouter } from 'react-router'
 
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+  Query,
+} from '@tanstack/react-query'
+
+const queryClient = new QueryClient()
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
+    <QueryClientProvider client={queryClient}>
       <App />
+    </QueryClientProvider>
     </BrowserRouter>
-  </StrictMode>,
+  </StrictMode>
 )

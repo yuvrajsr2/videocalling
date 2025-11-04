@@ -9,8 +9,21 @@ import ChatPage from './pages/ChatPage.jsx'
 import CallPage from './pages/CallPage.jsx'
 import NotificationsPage from './pages/NotificationsPage.jsx'
 import OnboardingPage from './pages/OnboardingPage.jsx'
+import { useQuery } from '@tanstack/react-query'
+import axios from 'axios'
+import { axiosInstance } from './lib/axios.js'
 
 function App() {
+
+  // tanstack basics
+  // const {data, isLoading, error} = useQuery({
+  //   queryKey: ['todos'],
+  //   queryFn: async () => {
+  //     const response = await axiosInstance.get('/auth/me');
+  //     return response.data;
+  //   }, retry:false
+  // })
+
   return (
     <div className=' h-screen' data-theme="night">
 

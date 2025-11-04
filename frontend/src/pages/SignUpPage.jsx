@@ -14,11 +14,17 @@ const SignUpPage = () => {
 
   const queryClient = useQueryClient();
 
-  const {mutate, isPending, error} = useMutation({
+  const {mutate, isLoading, error} = useMutation({
     mutationFn: async() =>{
       const response = await axiosInstance.post("/auth/signup", signupData);
       return response.data;
-    }, onSuccess:() => queryClient.invalidateQueries({queryKey:['authUser']})
+    },
+    onSuccess:(data) => {
+      // immediately populate auth cache to avoid a racey /me request
+      queryClient.setQueryData(['authUser'], data);
+      // navigate to homepage (use full reload to ensure cookies are applied)
+      window.location.href = '/';
+    }
   });
 
 
@@ -109,7 +115,7 @@ const SignUpPage = () => {
                   </div>
                 </div>
 
-                <button className='btn btn-primary w-full' type='submit'>{isPending ? "Signing up..." : "Create accouynt"}</button>
+                <button className='btn btn-primary w-full' type='submit'>{isLoading ? "Signing up..." : "Create account"}</button>
 
                 <div className='text-center mt-4 '>
                   <p>
